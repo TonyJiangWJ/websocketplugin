@@ -1,0 +1,51 @@
+plugins {
+    id("com.android.application")
+}
+
+// 需要配置一下环境变量 autojspasswd 为签名文件密钥
+def storePasswd = System.getenv('autojspasswd')
+def keyPasswd = System.getenv('autojspasswd')
+// autojsalias为创建时指定的alias
+def alias = System.getenv('autojsalias')
+// autojsstorepath 为证书文件路径
+def storePath = System.getenv('autojsstorepath')
+
+android {
+    namespace = "com.tony.websocket"
+    compileSdk = 30
+
+    signingConfigs {
+        release {
+            storeFile file(storePath)
+            storePassword storePasswd
+            keyPassword keyPasswd
+            keyAlias = alias
+        }
+    }
+    defaultConfig {
+        applicationId = "com.tony.websocket"
+        minSdk = 24
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk = 27
+        versionCode = 1
+        versionName = "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation("org.java-websocket:Java-WebSocket:1.5.7")
+}
