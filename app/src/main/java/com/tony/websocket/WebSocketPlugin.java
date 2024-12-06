@@ -20,5 +20,9 @@ public class WebSocketPlugin extends Plugin {
         return new MyWebSocketServer(port, socketHandler);
     }
 
+    public MyWebSocketClient createClient(String serverUrl, ClientHandler clientHandler) throws Exception {
+        return new MyWebSocketClient(serverUrl, clientHandler);
+    }
+
 
 }

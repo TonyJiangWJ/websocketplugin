@@ -5,6 +5,7 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 
 public class MyWebSocketServer extends WebSocketServer {
     private SocketHandler socketHandler;
@@ -37,6 +38,13 @@ public class MyWebSocketServer extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         if (socketHandler != null) {
             socketHandler.onMessage(conn, message);
+        }
+    }
+
+    @Override
+    public void onMessage(WebSocket conn, ByteBuffer message) {
+        if (socketHandler != null) {
+            socketHandler.onByteMessage(conn, message);
         }
     }
 
