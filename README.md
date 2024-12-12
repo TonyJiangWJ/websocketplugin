@@ -5,6 +5,7 @@
 - 基于 'org.java-websocket:Java-WebSocket:1.5.7' 实现的简易WebSocket插件，可以实现基础的websocket服务端和客户端，进行一些通信操作。
 - 适用于任意版本的AutoJS软件，仅在[修改版AutoJS](https://github.com/TonyJiangWJ/Auto.js)中验证过，只要没有对插件机制进行魔改就都可以进行使用。
 - 针对客户端和服务端的扩展操作可以见Java-WebSocket的源代码，然后自行扩展使用即可：https://github.com/TooTallNate/Java-WebSocket
+- 当前利用此插件实现的功能：[控件可视化工具](https://github.com/TonyJiangWJ/WebSocketWidgetInspector)
 
 ## 源码编译说明
 
